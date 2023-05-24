@@ -223,7 +223,7 @@ canvas#email {
   width: 22px;
   display: inline-block;
   margin-right: 10px;
-  background-image: url('../images/lang.png');
+  background-image: url('https://cdn.jsdelivr.net/gh/vorexfaiq/mpob-assets@v1.3.0/staffdirectory/img/lang.png');
 }
 
 .language-changer a.lang-en::before {
@@ -301,7 +301,7 @@ canvas#email {
 .logo-gov {
   max-width: 100%;
   background-size: 100%;
-  background-image: url('../images/logo-gov-min.png');
+  background-image: url('https://cdn.jsdelivr.net/gh/vorexfaiq/mpob-assets@v1.3.0/staffdirectory/img/logo-gov-min.png');
 }
  
 .logo-impac { background-position: 0 0%; background-size: 100%; }
