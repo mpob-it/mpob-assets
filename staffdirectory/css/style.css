@@ -1,0 +1,318 @@
+html, body, * {
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  background: #f8f8f8;
+}
+.container {
+  background: #fff;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.clear {
+  clear: both;
+}
+.mw-100 {
+  max-width: 100%;
+}
+.fs-14 {
+  font-size: 14px;
+}
+ul.nav {
+  width: 100%;
+  background: #5e7d00;
+  border-bottom: 10px solid #eca13d;
+}
+ul.nav li {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px 15px;
+  color: #fff;
+}
+ul.nav li.active {
+  background: #eca13d;
+  
+}
+ul.nav li a {
+  text-decoration: none;
+  color: #fff;
+}
+ul.nav li a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.checkbox-accordion {
+  background: #f8f8f8;
+  box-shadow: none;
+  border-radius: 8px;
+  min-height: 50px;
+  padding: 20px;
+  position: relative;
+}
+.checkbox-accordion::after {
+  content: "";
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  position: absolute;
+  right: 20px;
+  top: 26px;
+  pointer-events: none;
+}
+.checkbox-accordion .accordion-card {
+  font-weight: 500;
+  width: 100%;
+  cursor: pointer;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  text-transform:uppercase;
+}
+input[type=checkbox].accordion {
+  visibility: hidden;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+input[type=checkbox].accordion ~ .accordion-content {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+input[type=checkbox]:checked.accordion ~ .accordion-content {
+  max-height: 1700px;
+  transition: max-height 1s ease-in-out;
+}
+
+.profile-card {
+  background: #fff;
+  margin-right: 5px;
+  padding: 10px;
+  line-height: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 4px 5px 0px rgba(187,187,187,0.35);
+  -webkit-box-shadow: 3px 4px 5px 0px rgba(187,187,187,0.35);
+  -moz-box-shadow: 3px 4px 5px 0px rgba(187,187,187,0.35);
+
+}
+
+.profile-card .profile-image {
+  float: left;
+  display: inline;
+  margin: 0 10px 10px 0;
+  pointer-events: none;
+}
+
+.profile-card .profile-image img {
+  border: 3px solid #fff;
+  outline: 1px solid #bbb;
+}
+
+.profile-card .profile-name {
+  font-size: 14px;
+}
+
+.spacer-30 {
+  clear: both;
+  margin-top: 30px;
+}
+
+.spacer-65 {
+  margin-top: 65px;
+}
+
+.profile-card .position {
+  font-size: .775em;
+}
+
+.profile-card .contact-group {
+  display: inline-block;
+  line-height: 22px;
+}
+
+.unit-list ul {
+  padding: 0;
+  margin: 0;
+}
+
+.unit-list ul li {
+  padding: 0;
+  margin: 10px 0;
+  list-style: none;;
+}
+
+.unit-list ul li a {
+  text-decoration: none;
+  color: #000;
+  display: inline-block;
+}
+
+.unit-list ul li a:before {
+  content: "\f054";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  margin-right: 5px;
+}
+
+nav {
+  text-align: center;
+  margin: 0px auto 50px auto;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+}
+
+nav .pagination {
+  margin-bottom: 0;
+}
+
+nav .pagination li .page-link {
+  color: #000;
+} 
+
+nav .pagination li.active .page-link {
+  background-color: #eca13d;
+  border-color: #ccc;
+  color: #fff;
+}
+
+.em {
+  pointer-events: none;
+}
+
+canvas#email {
+  display: none;
+  pointer-events: none;
+}
+
+.language-changer {
+  float: right;
+  background-color: #f1f1f1;
+  padding: 5px 30px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.language-changer a {
+  text-decoration: none;
+  color: #000;
+  display: inline-block;
+}
+
+.language-changer a::before {
+  content: "";
+  height: 12px;
+  width: 22px;
+  display: inline-block;
+  margin-right: 10px;
+  background-image: url('../images/lang.png');
+}
+
+.language-changer a.lang-en::before {
+  background-position: 22px 0%;
+}
+
+.language-changer a.lang-ms::before {
+  background-position: 0 0%;
+}
+
+.back-link {
+  margin-right: 20px;
+  padding: 2px 10px;
+}
+
+.back-link:before {
+    content: "\2039";
+    font-weight: 900;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-rendering: auto;
+    line-height: 1;
+    margin-right: 5px;
+    font-size: 22px;
+}
+
+.footer {
+  text-align: center;
+}
+
+.footer .disclaimer {
+  background-color: #4b4b4b;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 20px;
+  margin-top: 30px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.footer .disclaimer .disclaimer-link {
+  margin-bottom: 20px;
+}
+
+.footer .best-viewed {
+  font-size: 12px;
+  color: #fff;
+  background-color: #333333;
+  padding: 20px;
+  text-align: left;
+}
+
+.footer a, .footer a:visited, .footer a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Fontawesome */
+.fas {
+  font-style: normal;
+}
+
+.fa-envelope::after {
+  content: "\f0e0";
+}
+
+.fa-phone-alt::after {
+  content: "\f879";
+}
+
+
+/* Generated by http://responsive-css.spritegen.com Responsive CSS Sprite Generator */
+ 
+.logo-gov {
+  max-width: 100%;
+  background-size: 100%;
+  background-image: url('../images/logo-gov-min.png');
+}
+ 
+.logo-impac { background-position: 0 0%; background-size: 100%; }
+.logo-bi-small { background-position: 0 9.090909%; background-size: 100%; }
+.logo-ksb { background-position: 0 19.269103%; background-size: 100%; }
+.logo-lgm { background-position: 0 28.239203%; background-size: 100%; }
+.logo-lkm { background-position: 0 37.209302%; background-size: 100%; }
+.logo-ltn { background-position: 0 46.179402%; background-size: 100%; }
+.logo-mg { background-position: 0 55.149502%; background-size: 100%; }
+.logo-mpb { background-position: 0 64.119601%; background-size: 100%; }
+.logo-mpoc { background-position: 0 73.089701%; background-size: 100%; }
+.logo-mpocc { background-position: 0 82.059801%; background-size: 100%; }
+.logo-msc { background-position: 0 91.0299%; background-size: 100%; }
+.logo-mtib { background-position: 0 100%; background-size: 100%; }
