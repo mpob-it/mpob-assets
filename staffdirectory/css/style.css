@@ -137,6 +137,9 @@ input[type=checkbox]:checked.accordion ~ .accordion-content {
 .profile-card .contact-group {
   display: inline-block;
   line-height: 22px;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .unit-list ul {
