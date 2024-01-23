@@ -1,0 +1,132 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background: url("https://cdn.jsdelivr.net/gh/mpob-it/mpob-assets@v1.4.4/mpob/error_page/bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: Inter,Helvetica,sans-serif;
+    color: #071437;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 25px;
+    margin: 0;
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  hr {
+    border-top: 1px dashed #071437;
+    margin: 30px 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+
+  a:hover {
+    color: #00ac98;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+    width: 100%;
+    margin: 20px 0;
+    background-color: #00ac98;
+    color: #fff;
+  }
+
+  span {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: block;
+    font-size: 10px;
+    font-weight: 300 !important;
+  }
+
+  span a {
+    font-weight: 300 !important;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 30px;
+  }
+
+  .wrapper {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 50px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1.6px 16px 4px;
+    margin-top: 20px;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 5px 0 50px 0;
+  }
+
+  .title-icon img {
+    height: 70px;
+  }
+
+  .title-content {
+    flex-grow: 1;
+  }
+
+  .title-content div {
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .title-caption {
+    font-size: 13px;
+  }
+
+  .link {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top:50px;
+  }
+
+  .logo-front {
+    max-width: 200px; 
+    margin-bottom: 8px;
+    margin-top: 20px;
+  }
+
+  .footer {
+    font-weight: 300;
+    font-size: 14px;
+    margin: 30px;
+  }
