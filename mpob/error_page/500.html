@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error 500: Internal Server Error</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/mpob-it/mpob-assets@v1.4.11/mpob/error_page/bg.webp" as="image" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,600,700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mpob-it/mpob-assets@v1.4.11/mpob/error_page/style.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <img src="https://cdn.jsdelivr.net/gh/mpob-it/mpob-assets@v1.4.4/mpob/mpob-logo.svg" data-src="https://cdn.jsdelivr.net/gh/mpob-it/mpob-assets@v1.4.4/mpob/mpob-logo-md.png" class="logo-front" alt="MPOB Logo">
+    <div class="wrapper">
+      <div class="title">
+        <div class="title-icon">
+          <img src="https://cdn.jsdelivr.net/gh/mpob-it/mpob-assets@v1.4.9/mpob/error_page/500.gif" alt="Error Icon">
+        </div>
+        <div class="title-content">
+          <div class="title-main">
+            <h1>Sorry, Something went wrong</h1>
+          </div>
+          <div class="title-caption">
+            Error 500: Internal Server Error
+          </div>
+        </div>
+      </div>
+      
+      <p>We apologize, but the website is currently experiencing an internal server error. This issue may be temporary, and our technical team is actively working to resolve it as quickly as possible.</p>
+      <hr />
+      <p>Please try refreshing the page, clearing cache and cookies or returning at a later time. If the problem persists, we appreciate your patience as we address the issue. If you need immediate assistance or have urgent concerns, please click the link below to submit a request for review. Our technical team will investigate your request promptly:</p>
+      <button class="btn" onclick="sendreq()">Request Access Review</button>
+      <p>Please provide as much information as possible regarding your need to access this page. This will assist us in expediting the review process and ensuring that legitimate requests are addressed accordingly.</p>
+      <hr />
+      <p>We apologize for any inconvenience this may cause and appreciate your understanding in our commitment to maintaining a better online experience.</p>
+      <p>Thank you for your cooperation.</p>
+      <div class="link">
+        <a href="/#/" onclick="window.localtion=window.location.hostname">&#x2190; Back</a>
+        <a href="https://mpob.gov.my/security-policy">Security Policy</a>
+        <a href="https://mpob.gov.my/disclaimer">Disclaimer</a>
+      </div>
+    </div>
+    <div class="container footer">
+      <span>
+        <a href="https://www.freepik.com/free-vector/white-gold-geometric-pattern-background-vector_18717112.htm" target="_blank" rel="noopener noreferrer">Image by rawpixel.com</a> on Freepik
+        <br />
+        <a href="https://www.flaticon.com/free-animated-icons/robot" title="robot animated icons" target="_blank" rel="noopener noreferrer">Robot animated icons created by Freepik - Flaticon</a>
+      </span>
+      Copyright &#169; Malaysian Palm Oil Board
+    </div>
+  </div>
+  <script defer>function sendreq(){var n=atob("bWFpbHRvOnNpdGkuc29iYXJpYWhAbXBvYi5nb3YubXk/c3ViamVjdD0=");window.location.href=n+"Error 500: "+encodeURI(window.location.href)}</script>
+</body>
+
+</html>
