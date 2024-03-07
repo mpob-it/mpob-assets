@@ -152,12 +152,10 @@ input[type=checkbox]:checked.accordion ~ .accordion-content {
 }
 
 .profile-card .contact-group {
-  display: inline-block;
   line-height: 22px;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 100%;
 }
 
 .profile-card .btn-vcard-wrapper {
@@ -368,12 +366,19 @@ canvas#email {
 .up-modal-content {
   background-color: transparent;
   box-shadow: none;
+  padding: 0;
 }
 
 .up-modal-backdrop {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   background-color: rgba(90,90,90,0.7);
+}
+
+.up-modal-close {
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 5px;
+  right: -50px;
 }
 
 /* Vcard */
@@ -401,17 +406,6 @@ canvas#email {
 .vcard__side--front {
   background-color: #fff;
 }
-.vcard__side--back {
-  transform: rotateY(180deg);
-  background-color: #fff;
-  text-align: center;
-}
-.vcard:hover .vcard__side--front {
-  transform: rotateY(-180deg);
-}
-.vcard:hover .vcard__side--back {
-  transform: rotateY(0deg);
-}
 .vcard__cont {
   padding: 14px 21px;
   background-color: #fff;
@@ -429,18 +423,26 @@ canvas#email {
 }
 .vcard-logo-front {
   margin-right: 20px;
-  height: 50px;
+  height: 65px;
 }
 .vcard-mpob-name-en {
   line-height: 25px;
   color: #198754;
   font-size: 25px;
 }
+.vcard-mpob-name-en > small {
+  font-size: 10px;
+  margin-top: -4px;
+  display: block;
+}
 .vcard-mpob-name-ms {
   display: block;
   font-size: 18px;
   color: #000;
   font-style: italic;
+}
+.vcard-qr {
+  margin-left: 20px;
 }
 .vcard-profile-image > img {
   width: auto;
@@ -458,7 +460,6 @@ canvas#email {
   flex-direction: column;
   justify-content: center;
 }
-.vcard-profile-title,
 .vcard-profile-name {
   color: #198754;
 }
@@ -486,4 +487,8 @@ canvas#email {
   color: #198754;
   padding: 20px 0 10px 0;
   font-size: 18px;
+}
+
+.vcard-capturing > div {
+  transform: none !important;
 }
