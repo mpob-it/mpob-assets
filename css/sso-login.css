@@ -1,0 +1,446 @@
+/**
+ * MPOB SSO Login Standard Style
+ * =====================================
+ * Theme-agnostic login page styles using CSS custom properties.
+ * Each system overrides colors by setting variables before loading this file.
+ *
+ * Usage:
+ *   <link href="sso-login.css" rel="stylesheet">
+ *   <style>
+ *     :root {
+ *       --sso-color-start: #1e3a5f;
+ *       --sso-color-mid: #2d5a87;
+ *       --sso-color-end: #d4a017;
+ *       --sso-color-start-hover: #162d4a;
+ *       --sso-color-end-hover: #b8900f;
+ *       --sso-branding-bg-start: #f8f4e8;
+ *       --sso-branding-bg-end: #fff9eb;
+ *     }
+ *   </style>
+ *
+ * Each system MUST provide its own theme variables AFTER loading this file.
+ */
+
+/* ========== Reset ========== */
+.sso-login * {
+    box-sizing: border-box;
+}
+
+/* ========== Filament Layout Overrides ========== */
+.fi-simple-layout .fi-simple-main-ctn {
+    display: block !important;
+    padding: 0 !important;
+}
+.fi-simple-layout .fi-simple-main {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.fi-simple-layout .fi-simple-page {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.fi-simple-layout .fi-simple-page-content {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+}
+[class*="fi-simple"] [class*="fi-simple-main"] {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* ========== Page Background ========== */
+.sso-login {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(to bottom right, var(--sso-color-start), var(--sso-color-mid), var(--sso-color-end));
+}
+
+/* ========== Layout ========== */
+.sso-login__center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.sso-login__container {
+    width: 100%;
+    max-width: 64rem;
+}
+
+.sso-login__card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.sso-login__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* ========== Branding Column (Left) ========== */
+.sso-login__branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 600px;
+    position: relative;
+    background: linear-gradient(to bottom, var(--sso-branding-bg-start), var(--sso-branding-bg-end));
+    padding: 3rem;
+}
+
+.sso-login__slogan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.sso-login__slogan h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sso-login__slogan-1 {
+    opacity: 0;
+    animation: ssoFadeCenterToLeft 1.2s ease-out 0.5s both;
+}
+
+.sso-login__slogan-1 h3 {
+    background-image: linear-gradient(to right, var(--sso-color-start), var(--sso-color-mid), var(--sso-color-end));
+}
+
+.sso-login__slogan-2 {
+    opacity: 0;
+    animation: ssoFadeCenterToRight 1.2s ease-out 1s both;
+}
+
+.sso-login__slogan-2 h3 {
+    background-image: linear-gradient(to right, var(--sso-color-end), var(--sso-color-mid), var(--sso-color-start));
+}
+
+.sso-login__decorative-outer {
+    width: 192px;
+    height: 192px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.06));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sso-login__decorative-inner {
+    width: 144px;
+    height: 144px;
+    border-radius: 50%;
+    background: linear-gradient(to top right, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.02));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sso-login__decorative-icon {
+    width: 80px;
+    height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    color: rgba(0, 0, 0, 0.08);
+}
+
+.sso-login__badge {
+    margin-top: 2.5rem;
+}
+
+.sso-login__badge span {
+    padding: 0.375rem 1rem;
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--sso-color-start);
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 9999px;
+}
+
+/* ========== Form Column (Right) ========== */
+.sso-login__form {
+    padding: 2rem 2rem 0 2rem;
+}
+
+/* Logo */
+.sso-login__logo {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.sso-login__logo img {
+    height: 128px;
+    width: auto;
+    margin: 0 auto 0.5rem auto;
+    display: block;
+}
+
+/* Header */
+.sso-login__header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.sso-login__header-login {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 0.5rem 0;
+}
+
+.sso-login__header-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to right, var(--sso-color-start), var(--sso-color-mid), var(--sso-color-end));
+    background-size: 200% 100%;
+    margin: 0 0 0.75rem 0;
+    animation: ssoFadeInDown 1s ease-out, ssoGradientFlow 4s ease-in-out infinite 1s;
+}
+
+.sso-login__header-subtitle {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* ========== Alert Messages ========== */
+.sso-login__alert {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.sso-login__alert--error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+}
+
+.sso-login__alert--success {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+}
+
+.sso-login__alert-icon {
+    width: 20px;
+    height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+}
+
+.sso-login__alert--error .sso-login__alert-icon {
+    color: #f87171;
+}
+
+.sso-login__alert--success .sso-login__alert-icon {
+    color: #4ade80;
+}
+
+.sso-login__alert--error p {
+    font-size: 0.875rem;
+    color: #991b1b;
+    margin: 0;
+}
+
+.sso-login__alert--success p {
+    font-size: 0.875rem;
+    color: #166534;
+    margin: 0;
+}
+
+/* ========== SSO Button ========== */
+.sso-login__button-wrap {
+    margin-bottom: 1.5rem;
+}
+
+.sso-login__button {
+    display: block;
+    width: 100%;
+    background: linear-gradient(to right, var(--sso-color-start), var(--sso-color-end));
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sso-login__button:hover {
+    background: linear-gradient(to right, var(--sso-color-start-hover), var(--sso-color-end-hover));
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.sso-login__button-content {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.sso-login__button-content--hidden {
+    display: none;
+}
+
+.sso-login__button-icon {
+    width: 20px;
+    height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+}
+
+.sso-login__button--loading {
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+/* ========== Contact Info ========== */
+.sso-login__contact {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+}
+
+.sso-login__contact-title {
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.sso-login__contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.sso-login__contact-card {
+    background: #f9fafb;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+}
+
+.sso-login__contact-card h4 {
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0 0 0.5rem 0;
+    font-size: inherit;
+}
+
+.sso-login__contact-card p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #374151;
+}
+
+.sso-login__contact-card a {
+    color: var(--sso-color-start);
+    text-decoration: none;
+}
+
+.sso-login__contact-card a:hover {
+    color: var(--sso-color-end);
+}
+
+/* ========== Footer ========== */
+.sso-login__footer {
+    background: #f9fafb;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #6b7280;
+    border-top: 1px solid #e5e7eb;
+    padding: 1rem 2rem;
+}
+
+.sso-login__footer p {
+    margin: 0;
+}
+
+.sso-login__footer p + p {
+    margin-top: 0.25rem;
+}
+
+/* ========== Animations ========== */
+@keyframes ssoFadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ssoFadeCenterToLeft {
+    0% { opacity: 0; transform: translateX(0); }
+    50% { opacity: 0.7; transform: translateX(-8px); }
+    100% { opacity: 1; transform: translateX(-16px); }
+}
+
+@keyframes ssoFadeCenterToRight {
+    0% { opacity: 0; transform: translateX(0); }
+    50% { opacity: 0.7; transform: translateX(8px); }
+    100% { opacity: 1; transform: translateX(16px); }
+}
+
+@keyframes ssoGradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes ssoSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.sso-login__spinner {
+    animation: ssoSpin 1s linear infinite;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 1023px) {
+    .sso-login__branding {
+        display: none !important;
+    }
+    .sso-login__grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .sso-login__contact-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .sso-login__form {
+        padding: 1.5rem 1rem 0 1rem !important;
+    }
+    .sso-login__logo img {
+        height: 110px;
+    }
+    .sso-login__header-title {
+        font-size: 1.5rem;
+    }
+}
