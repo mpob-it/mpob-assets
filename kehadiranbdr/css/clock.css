@@ -355,15 +355,11 @@
  * The scroll wrapper handles overflow when slots > 8 or screen < 320px.
  */
 .timeline-scroll {
-    /* Negative side margins bleed the scroll area to the card edges */
     overflow-x: auto;
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
-    /* Hide scrollbar but keep functionality */
     scrollbar-width: none;
-    padding: 8px 0 4px;
-    /* Give labels room below without clipping */
-    margin-bottom: 2px;
+    padding: 8px 16px 40px;
 }
 .timeline-scroll::-webkit-scrollbar { display: none; }
 
@@ -380,14 +376,13 @@
 .timeline-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     flex-shrink: 0;
     width: 64px;
-    overflow: visible;
+    position: relative;
 }
-/* Last item gets no right-side line so it can be narrower */
 .timeline-item:last-child {
-    width: 24px;
+    width: 20px;
 }
 
 .timeline-dot-row {
@@ -435,10 +430,11 @@
     text-align: center;
     white-space: nowrap;
     line-height: 1.3;
-    overflow: visible;
-}
-.timeline-item:last-child .timeline-label {
-    overflow: visible;
+    /* Center label under the 20px dot: shift left by half label width minus half dot */
+    position: absolute;
+    top: 100%;
+    left: 10px; /* half of dot width */
+    transform: translateX(-50%);
 }
 
 .timeline-check {
