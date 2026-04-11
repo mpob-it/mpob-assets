@@ -412,6 +412,12 @@
 .timeline-dot-late     { border-color: var(--c-red);     background: var(--c-red); }
 .timeline-dot-missed   { border-color: var(--c-red);     background: #FECACA; opacity: 0.65; }
 .timeline-dot-overtime { border-color: #F59E0B;          background: #FEF3C7; }
+/* Clock-out dots: outline only (not filled) */
+.timeline-dot-out          { border-color: #d1ccc8; background: white; }
+.timeline-dot-out-active   { border-color: var(--c-primary); background: white; }
+.timeline-dot-out-done     { border-color: var(--c-primary); background: var(--c-primary); }
+.timeline-dot-out-late     { border-color: var(--c-red); background: var(--c-red); }
+.timeline-dot-out-missed   { border-color: var(--c-red); background: white; opacity: 0.65; }
 
 .timeline-line {
     /* Fills the remaining width of the item after the dot */
@@ -426,18 +432,17 @@
 .timeline-line-missed { background: #FECACA; }
 
 .timeline-label {
-    /* Hangs below the dot row; centered on the dot (20px wide) */
     margin-top: 5px;
     text-align: center;
     white-space: nowrap;
     line-height: 1.3;
-    /* Pull label under the dot center, not the full item width */
-    width: 36px;
-    margin-left: -8px; /* (36 - 20) / 2, centering under a 20px dot */
+    /* Center label under the 20px dot within the 44px item */
+    width: 44px;
+    margin-left: -12px;
 }
-/* Last item: label under its dot only, no offset needed */
 .timeline-item:last-child .timeline-label {
-    margin-left: -8px;
+    width: 40px;
+    margin-left: -10px;
 }
 
 .timeline-check {
