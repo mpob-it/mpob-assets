@@ -378,17 +378,16 @@
 }
 
 .timeline-item {
-    /* Column: dot-row on top, label below */
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-shrink: 0;
-    /* Fixed width: dot(20px) + half-line(12px) on each side = 44px */
-    width: 44px;
+    width: 64px;
+    overflow: visible;
 }
 /* Last item gets no right-side line so it can be narrower */
 .timeline-item:last-child {
-    width: 20px;
+    width: 24px;
 }
 
 .timeline-dot-row {
@@ -436,13 +435,10 @@
     text-align: center;
     white-space: nowrap;
     line-height: 1.3;
-    /* Center label under the 20px dot within the 44px item */
-    width: 44px;
-    margin-left: -12px;
+    overflow: visible;
 }
 .timeline-item:last-child .timeline-label {
-    width: 40px;
-    margin-left: -10px;
+    overflow: visible;
 }
 
 .timeline-check {
