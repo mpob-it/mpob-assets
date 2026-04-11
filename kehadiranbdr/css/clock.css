@@ -343,43 +343,109 @@
 }
 
 /* === Timeline (horizontal) === */
+/*
+ * Layout model: the outer .timeline is a single horizontal flex row.
+ * Each .timeline-item is a column (dot on top, label below).
+ * The connecting line lives INSIDE .timeline-dot-row, to the RIGHT of
+ * the dot, so the sequence reads: dot → line → dot → line → dot.
+ * The last item has its line hidden via x-show.
+ *
+ * Item width is fixed so that 8 slots sit comfortably at ~44px each,
+ * giving a natural total of ~352px — just fits a 360px screen.
+ * The scroll wrapper handles overflow when slots > 8 or screen < 320px.
+ */
+.timeline-scroll {
+    /* Negative side margins bleed the scroll area to the card edges */
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none;
+    padding: 8px 0 4px;
+    /* Give labels room below without clipping */
+    margin-bottom: 2px;
+}
+.timeline-scroll::-webkit-scrollbar { display: none; }
+
 .timeline {
-    display: flex; align-items: flex-start; justify-content: center;
-    padding: 8px 0; overflow-x: auto;
+    /* Single horizontal row — never wrap */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    /* Center when fewer slots fit without scrolling */
+    min-width: max-content;
 }
+
 .timeline-item {
-    display: flex; flex-direction: column; align-items: center;
+    /* Column: dot-row on top, label below */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-shrink: 0;
+    /* Fixed width: dot(20px) + half-line(12px) on each side = 44px */
+    width: 44px;
 }
-.timeline-dot-wrap {
-    display: flex; align-items: center;
+/* Last item gets no right-side line so it can be narrower */
+.timeline-item:last-child {
+    width: 20px;
 }
+
+.timeline-dot-row {
+    /* Horizontal strip: dot | line */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 20px; /* matches dot diameter */
+}
+
 .timeline-dot {
-    width: 24px; height: 24px; border-radius: 50%;
+    width: 20px; height: 20px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    border: 3px solid var(--c-cream); background: white; z-index: 1;
-    flex-shrink: 0; transition: all 0.2s;
+    border: 2.5px solid var(--c-cream); background: white; z-index: 1;
+    flex-shrink: 0; transition: background 0.2s, border-color 0.2s;
 }
-.timeline-dot-pending { border-color: var(--c-cream); background: var(--c-cream); }
-.timeline-dot-active { border-color: var(--c-primary); background: var(--c-primary-light); }
-.timeline-dot-done { border-color: var(--c-primary); background: var(--c-primary); }
-.timeline-dot-late { border-color: var(--c-red); background: var(--c-red); }
-.timeline-dot-missed { border-color: var(--c-red); background: var(--c-red); opacity: 0.4; }
-.timeline-dot-overtime { border-color: #F59E0B; background: #FEF3C7; }
+.timeline-dot-pending  { border-color: #d1ccc8; background: #e8e4e0; }
+.timeline-dot-active   { border-color: var(--c-primary); background: var(--c-primary-light); }
+.timeline-dot-done     { border-color: var(--c-primary); background: var(--c-primary); }
+.timeline-dot-late     { border-color: var(--c-red);     background: var(--c-red); }
+.timeline-dot-missed   { border-color: var(--c-red);     background: #FECACA; opacity: 0.65; }
+.timeline-dot-overtime { border-color: #F59E0B;          background: #FEF3C7; }
+
 .timeline-line {
-    height: 3px; width: 20px; background: var(--c-cream); flex-shrink: 0;
+    /* Fills the remaining width of the item after the dot */
+    flex: 1;
+    height: 2.5px;
+    background: #e0dbd6;
+    flex-shrink: 0;
+    transition: background 0.2s;
 }
 .timeline-line-done { background: var(--c-primary); }
 .timeline-line-late { background: var(--c-red); }
+.timeline-line-missed { background: #FECACA; }
+
 .timeline-label {
-    margin-top: 4px; text-align: center; white-space: nowrap;
-    line-height: 1.2;
+    /* Hangs below the dot row; centered on the dot (20px wide) */
+    margin-top: 5px;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.3;
+    /* Pull label under the dot center, not the full item width */
+    width: 36px;
+    margin-left: -8px; /* (36 - 20) / 2, centering under a 20px dot */
 }
+/* Last item: label under its dot only, no offset needed */
+.timeline-item:last-child .timeline-label {
+    margin-left: -8px;
+}
+
 .timeline-check {
-    width: 10px; height: 10px;
+    width: 9px; height: 9px;
 }
+
 .timeline-clocked {
-    margin-top: 2px;
+    margin-top: 1px;
 }
 
 /* === Map Markers === */
