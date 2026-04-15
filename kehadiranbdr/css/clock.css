@@ -208,7 +208,9 @@
 
 /* === Positioned Overlays === */
 .overlay-top {
-    position: absolute; top: 16px; left: 50%;
+    position: absolute;
+    top: calc(var(--ios-safe-top) + 82px);
+    left: 50%;
     transform: translateX(-50%); z-index: 1000;
     width: 92%; max-width: 420px;
 }
@@ -654,8 +656,8 @@
     --ios-safe-left: env(safe-area-inset-left);
     --ios-safe-right: env(safe-area-inset-right);
 
-    --ios-glass-bg: rgba(255, 251, 247, 0.72);
-    --ios-glass-bg-strong: rgba(255, 251, 247, 0.88);
+    --ios-glass-bg: rgba(255, 255, 255, 0.55);
+    --ios-glass-bg-strong: rgba(255, 255, 255, 0.72);
     --ios-glass-blur: saturate(180%) blur(22px);
     --ios-hairline: rgba(20, 18, 30, 0.08);
     --ios-hairline-soft: rgba(20, 18, 30, 0.04);
@@ -684,7 +686,11 @@
 }
 
 /* ===== Body surface: subtle tinted gradient behind glass ===== */
-body { background: var(--c-peach); }
+body {
+    background: linear-gradient(180deg, #f6f6f6 0%, #eeeeee 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+}
 
 /* ===== Floating Top Bar ===== */
 .ios-topbar {
@@ -883,9 +889,11 @@ body { background: var(--c-peach); }
 
 /* ===== iOS cards & surfaces ===== */
 .ios-card {
-    background: white;
+    background: var(--ios-glass-bg-strong);
+    -webkit-backdrop-filter: var(--ios-glass-blur);
+    backdrop-filter: var(--ios-glass-blur);
     border-radius: var(--ios-radius-lg);
-    border: 1px solid var(--ios-hairline-soft);
+    border: 1px solid var(--ios-hairline);
     box-shadow: var(--ios-shadow-card);
 }
 .ios-card-pad { padding: 20px; }
@@ -1012,11 +1020,14 @@ body { background: var(--c-peach); }
 }
 .btn:active:not(:disabled) { transform: scale(0.98); }
 
-/* Registration card becomes iOS card */
+/* Registration card becomes iOS glass card */
 .clock-card {
+    background: var(--ios-glass-bg-strong);
+    -webkit-backdrop-filter: var(--ios-glass-blur);
+    backdrop-filter: var(--ios-glass-blur);
     border-radius: var(--ios-radius-xl);
     box-shadow: var(--ios-shadow-card);
-    border: 1px solid var(--ios-hairline-soft);
+    border: 1px solid var(--ios-hairline);
 }
 
 /* Make inputs feel iOS-like */
