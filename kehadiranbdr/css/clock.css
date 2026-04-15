@@ -779,7 +779,7 @@ body {
 .ios-page {
     min-height: 100vh;
     min-height: 100dvh;
-    padding-top: calc(var(--ios-safe-top) + 64px);
+    padding-top: calc(var(--ios-safe-top) + 92px);
     padding-bottom: calc(var(--ios-safe-bottom) + var(--ios-nav-height) + var(--ios-nav-inset) + 24px);
     display: flex;
     flex-direction: column;
