@@ -723,7 +723,7 @@ body {
 .ios-topbar-floating {
     left: 12px;
     right: 12px;
-    top: calc(var(--ios-safe-top) + 10px);
+    top: 10px;
     padding: 0;
     background: transparent;
     -webkit-backdrop-filter: none;
@@ -793,7 +793,7 @@ body {
 .ios-page {
     min-height: 100vh;
     min-height: 100dvh;
-    padding-top: calc(var(--ios-safe-top) + 110px);
+    padding-top: 76px;
     padding-bottom: calc(var(--ios-safe-bottom) + var(--ios-nav-height) + var(--ios-nav-inset) + 24px);
     display: flex;
     flex-direction: column;
@@ -1154,7 +1154,6 @@ body {
    Flip Toast — topbar pill flips on X-axis to reveal a toast
    ============================================================ */
 .ios-topbar-flip {
-    position: relative;
     perspective: 1400px;
 }
 .ios-topbar-flip-inner {
@@ -1563,9 +1562,11 @@ body {
    ============================================================ */
 .ios-week-strip {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 6px;
     padding: 4px 0 2px;
+    width: 100%;
+    min-width: 0;
 }
 .ios-day-chip {
     display: flex;
@@ -1574,11 +1575,17 @@ body {
     gap: 4px;
     padding: 8px 0;
     border-radius: 14px;
-    background: rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.22);
+    -webkit-backdrop-filter: var(--ios-glass-blur);
+    backdrop-filter: var(--ios-glass-blur);
     border: 1px solid var(--ios-hairline-soft);
     cursor: pointer;
     transition: transform 0.15s var(--ios-ease), background 0.2s var(--ios-ease), border-color 0.2s var(--ios-ease);
     -webkit-tap-highlight-color: transparent;
+    min-width: 0;
+}
+@media (prefers-color-scheme: dark) {
+    .ios-day-chip { background: rgba(255,255,255,0.06); }
 }
 .ios-day-chip:active { transform: scale(0.96); }
 .ios-day-chip-dow {
