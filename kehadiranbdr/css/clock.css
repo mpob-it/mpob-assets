@@ -717,19 +717,20 @@ body {
     pointer-events: auto;
 }
 
-/* Floating variant: detached pill, used over full-screen maps */
+/* Floating variant: detached pill, used over full-screen maps.
+   Visual styling (bg/border/shadow/padding) lives on the flip faces so the
+   entire pill appears to flip during PwaToast, not just its content. */
 .ios-topbar-floating {
     left: 12px;
     right: 12px;
     top: calc(var(--ios-safe-top) + 10px);
-    padding: 12px 16px;
-    border-radius: var(--ios-radius-lg);
-    border: 1px solid var(--ios-hairline);
-    box-shadow: var(--ios-shadow-nav);
-    background: rgba(255, 255, 255, 0.55);
-}
-@media (prefers-color-scheme: dark) {
-    .ios-topbar-floating { background: rgba(28, 26, 36, 0.55); }
+    padding: 0;
+    background: transparent;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    border: none;
+    border-bottom: none;
+    box-shadow: none;
 }
 
 .ios-topbar-inner {
@@ -1169,6 +1170,23 @@ body {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
+.ios-topbar-flip.ios-topbar-floating .ios-topbar-face-front,
+.ios-topbar-flip.ios-topbar-floating .ios-topbar-face-back {
+    border-radius: var(--ios-radius-lg);
+    box-shadow: var(--ios-shadow-nav);
+    border: 1px solid var(--ios-hairline);
+    padding: 12px 16px;
+}
+.ios-topbar-flip.ios-topbar-floating .ios-topbar-face-front {
+    background: rgba(255, 255, 255, 0.55);
+    -webkit-backdrop-filter: var(--ios-glass-blur);
+    backdrop-filter: var(--ios-glass-blur);
+}
+@media (prefers-color-scheme: dark) {
+    .ios-topbar-flip.ios-topbar-floating .ios-topbar-face-front {
+        background: rgba(28, 26, 36, 0.55);
+    }
+}
 .ios-topbar-face-front {
     position: relative;
 }
@@ -1179,8 +1197,6 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 16px;
-    border-radius: inherit;
     color: white;
     font-weight: 600;
     font-size: 14px;
