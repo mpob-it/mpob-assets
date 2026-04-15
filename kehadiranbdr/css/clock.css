@@ -1084,27 +1084,35 @@ body {
 /* ===== Dark mode ===== */
 @media (prefers-color-scheme: dark) {
     :root {
+        /* Text + muted surfaces */
         --c-dark: #F2F0F5;
         --c-muted: #9a96a4;
+
+        /* Warm-peach neutrals become dark cool neutrals */
         --c-off-white: #1f1d28;
         --c-cream: rgba(255, 255, 255, 0.12);
         --c-peach: #14121E;
         --c-light-gray: #1a1823;
         --c-disabled-bg: #2a2832;
         --c-disabled-text: #6a6772;
+
+        /* Primary stays teal; nudge the tint slightly for dark surfaces */
         --c-primary-light: rgba(45, 143, 143, 0.20);
 
+        /* Frosted glass on dark */
         --ios-glass-bg: rgba(28, 26, 36, 0.32);
         --ios-glass-bg-strong: rgba(28, 26, 36, 0.48);
         --ios-hairline: rgba(255, 255, 255, 0.10);
         --ios-hairline-soft: rgba(255, 255, 255, 0.06);
 
+        /* Body image overlay → dark tint over the bg photo */
         --ios-bg-overlay: linear-gradient(180deg, rgba(20,18,30,0.55) 0%, rgba(20,18,30,0.72) 100%);
         --ios-bg-fallback: linear-gradient(180deg, #1a1823 0%, #14121E 100%);
     }
 
     body { background-color: #14121E; }
 
+    /* Hardcoded white surfaces → dark elevated surface */
     .bg-white,
     .input,
     .btn-outline,
@@ -1116,19 +1124,26 @@ body {
     .input:focus { background: rgba(255, 255, 255, 0.14); }
     .ios-icon-btn:active { background: rgba(255, 255, 255, 0.14); }
 
+    /* Disabled button contrast */
     .btn:disabled { background: var(--c-disabled-bg); color: var(--c-disabled-text); }
 
+    /* Rose status chips get dim dark-mode red-ish background */
     .ios-status-pill-err { background: rgba(239, 68, 68, 0.14); }
     .ios-status-pill-warn { background: rgba(245, 158, 11, 0.14); }
     .ios-status-pill-ok { background: rgba(45, 143, 143, 0.18); }
 
+    /* Timeline dots keep legibility */
     .timeline-dot-out,
     .timeline-dot-out-active,
     .timeline-dot-out-missed { background: #2a2832; }
 
+    /* Aktiviti list items are hard-coded rgba-white — flip to faint white on dark */
     .ios-timeline li { background: rgba(255, 255, 255, 0.06) !important; }
 
+    /* Mini-map/image placeholders darker fallback */
     .ios-mini-map { background: #1a1823; }
+
+    /* Selected day-chip dot stays white on primary; nothing to do */
 }
 
 /* ============================================================
