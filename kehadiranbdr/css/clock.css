@@ -656,9 +656,9 @@
     --ios-safe-left: env(safe-area-inset-left);
     --ios-safe-right: env(safe-area-inset-right);
 
-    --ios-glass-bg: rgba(255, 255, 255, 0.55);
-    --ios-glass-bg-strong: rgba(255, 255, 255, 0.72);
-    --ios-glass-blur: saturate(180%) blur(22px);
+    --ios-glass-bg: rgba(255, 255, 255, 0.32);
+    --ios-glass-bg-strong: rgba(255, 255, 255, 0.42);
+    --ios-glass-blur: saturate(180%) blur(26px);
     --ios-hairline: rgba(20, 18, 30, 0.08);
     --ios-hairline-soft: rgba(20, 18, 30, 0.04);
 
