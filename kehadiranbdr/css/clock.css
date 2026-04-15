@@ -726,7 +726,10 @@ body {
     border-radius: var(--ios-radius-lg);
     border: 1px solid var(--ios-hairline);
     box-shadow: var(--ios-shadow-nav);
-    background: var(--ios-glass-bg-strong);
+    background: rgba(255, 255, 255, 0.55);
+}
+@media (prefers-color-scheme: dark) {
+    .ios-topbar-floating { background: rgba(28, 26, 36, 0.55); }
 }
 
 .ios-topbar-inner {
@@ -789,7 +792,7 @@ body {
 .ios-page {
     min-height: 100vh;
     min-height: 100dvh;
-    padding-top: calc(var(--ios-safe-top) + 92px);
+    padding-top: calc(var(--ios-safe-top) + 110px);
     padding-bottom: calc(var(--ios-safe-bottom) + var(--ios-nav-height) + var(--ios-nav-inset) + 24px);
     display: flex;
     flex-direction: column;
