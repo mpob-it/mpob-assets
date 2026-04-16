@@ -793,7 +793,7 @@ body {
 .ios-page {
     min-height: 100vh;
     min-height: 100dvh;
-    padding-top: 76px;
+    padding-top: 96px;
     padding-bottom: calc(var(--ios-safe-bottom) + var(--ios-nav-height) + var(--ios-nav-inset) + 24px);
     display: flex;
     flex-direction: column;
@@ -852,6 +852,23 @@ body {
     background: var(--c-primary-light);
 }
 .ios-nav-icon { width: 22px; height: 22px; }
+.ios-nav-icon-wrap { position: relative; display: inline-flex; }
+.ios-nav-badge {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 8px;
+    background: #EF4444;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(239, 68, 68, 0.35);
+}
 .ios-nav-label {
     font-size: 10px;
     font-weight: 600;
