@@ -1133,38 +1133,149 @@ body {
 
     body { background-color: #14121E; }
 
-    /* Hardcoded white surfaces → dark elevated surface */
+    /* ── All hardcoded white surfaces → dark elevated surface ── */
     .bg-white,
     .input,
     .btn-outline,
     .pin-key-num,
-    .ios-icon-btn {
-        background: rgba(255, 255, 255, 0.08);
+    .ios-icon-btn,
+    .card-xl,
+    .clock-card,
+    .ios-sheet,
+    .ios-list,
+    .ios-segment,
+    .ios-note-card,
+    .ios-composer,
+    .rekod-card,
+    .ios-hero-stats,
+    .ios-group .ios-group-list,
+    .ios-status-pill {
+        background: rgba(255, 255, 255, 0.08) !important;
         color: var(--c-dark);
     }
-    .input:focus { background: rgba(255, 255, 255, 0.14); }
-    .ios-icon-btn:active { background: rgba(255, 255, 255, 0.14); }
+    .input:focus { background: rgba(255, 255, 255, 0.14) !important; }
+    .ios-icon-btn:active { background: rgba(255, 255, 255, 0.14) !important; }
+    .ios-composer-input {
+        background: transparent !important;
+        color: var(--c-dark);
+    }
+    .ios-composer-input::placeholder { color: var(--c-muted); }
 
-    /* Disabled button contrast */
+    /* ── Buttons ── */
     .btn:disabled { background: var(--c-disabled-bg); color: var(--c-disabled-text); }
+    .btn-disabled { background: var(--c-disabled-bg) !important; color: var(--c-disabled-text) !important; }
+    .btn-outline { border-color: rgba(255, 255, 255, 0.15) !important; }
 
-    /* Rose status chips get dim dark-mode red-ish background */
-    .ios-status-pill-err { background: rgba(239, 68, 68, 0.14); }
-    .ios-status-pill-warn { background: rgba(245, 158, 11, 0.14); }
-    .ios-status-pill-ok { background: rgba(45, 143, 143, 0.18); }
+    /* ── Chips ── */
+    .ios-chip {
+        background: rgba(255, 255, 255, 0.10);
+        color: var(--c-dark);
+    }
+    .ios-chip-primary {
+        background: rgba(45, 143, 143, 0.18) !important;
+        color: var(--c-primary);
+    }
 
-    /* Timeline dots keep legibility */
+    /* ── Month/week slider (ios-segment) ── */
+    .ios-segment { border-color: rgba(255, 255, 255, 0.10) !important; }
+    .ios-segment-label { color: var(--c-dark); }
+    .ios-segment-btn { color: var(--c-muted); border-color: rgba(255, 255, 255, 0.12); }
+
+    /* ── Group rows (account/profile sections) ── */
+    .ios-group-title { color: var(--c-muted); }
+    .ios-group-row { border-color: rgba(255, 255, 255, 0.06) !important; }
+    .ios-group-row-label { color: var(--c-dark); }
+    .ios-group-row-sub { color: var(--c-muted); }
+    .ios-group-row-value { color: var(--c-muted); }
+    .ios-group-chev svg { color: var(--c-muted); }
+
+    /* Icon tints — soften for dark surfaces */
+    .ios-group-row-icon.tint-blue { background: rgba(59, 130, 246, 0.15) !important; color: #60a5fa; }
+    .ios-group-row-icon.tint-amber { background: rgba(245, 158, 11, 0.15) !important; color: #fbbf24; }
+    .ios-group-row-icon.tint-rose { background: rgba(239, 68, 68, 0.15) !important; color: #f87171; }
+
+    /* ── Hero stats (rekod page) ── */
+    .ios-hero-stats-title { color: var(--c-dark); }
+    .ios-hero-stats-head { border-color: rgba(255, 255, 255, 0.08); }
+
+    /* ── Status pills ── */
+    .ios-status-pill-err { background: rgba(239, 68, 68, 0.14) !important; }
+    .ios-status-pill-warn { background: rgba(245, 158, 11, 0.14) !important; }
+    .ios-status-pill-ok { background: rgba(45, 143, 143, 0.18) !important; }
+
+    /* ── Timeline dots ── */
     .timeline-dot-out,
     .timeline-dot-out-active,
     .timeline-dot-out-missed { background: #2a2832; }
+    .timeline-dot { border-color: rgba(255, 255, 255, 0.15); }
 
-    /* Aktiviti list items are hard-coded rgba-white — flip to faint white on dark */
-    .ios-timeline li { background: rgba(255, 255, 255, 0.06) !important; }
+    /* ── Aktiviti list items ── */
+    .ios-timeline li { background: rgba(255, 255, 255, 0.06) !important; border-color: rgba(255, 255, 255, 0.08) !important; }
 
-    /* Mini-map/image placeholders darker fallback */
+    /* ── Note card (aktiviti header) ── */
+    .ios-note-card-head { border-color: rgba(255, 255, 255, 0.08) !important; }
+
+    /* ── Profile hero ── */
+    .ios-profile-name { color: var(--c-dark); }
+    .ios-profile-email { color: var(--c-muted); }
+    .ios-profile-avatar { background: rgba(255, 255, 255, 0.08); color: var(--c-muted); }
+
+    /* ── Empty state illustrations ── */
+    .ios-timeline-empty-illus { background: rgba(255, 255, 255, 0.06); color: var(--c-muted); }
+    .ios-timeline-empty-title { color: var(--c-dark); }
+    .ios-timeline-empty-sub { color: var(--c-muted); }
+
+    /* ── Day chips (aktiviti week strip) ── */
+    .ios-day-chip { background: rgba(255, 255, 255, 0.06); }
+    .ios-day-chip.is-selected { background: var(--c-primary); }
+    .ios-day-chip.is-selected .ios-day-chip-dow,
+    .ios-day-chip.is-selected .ios-day-chip-num { color: #fff; }
+    .ios-day-chip-num { color: var(--c-dark); }
+
+    /* ── Bottom nav ── */
+    .ios-bottom-nav .ios-bottom-nav-bar {
+        background: rgba(28, 26, 36, 0.72) !important;
+        border-color: rgba(255, 255, 255, 0.08) !important;
+    }
+    .ios-nav-item { color: var(--c-muted); }
+    .ios-nav-item.is-active { color: var(--c-primary); background: rgba(45, 143, 143, 0.12); }
+    .ios-nav-fab { background: var(--c-primary); }
+
+    /* ── Log badge ── */
+    .ios-nav-badge { background: #EF4444; color: #fff; }
+
+    /* ── Map invert for dark (Leaflet container) ── */
+    .leaflet-container .leaflet-tile-pane {
+        filter: brightness(0.7) contrast(1.2) saturate(0.3) hue-rotate(180deg) invert(1);
+    }
+    .leaflet-container .leaflet-marker-pane,
+    .leaflet-container .leaflet-popup-pane,
+    .leaflet-container .leaflet-overlay-pane {
+        filter: none;
+    }
+    .leaflet-popup-content-wrapper {
+        background: rgba(28, 26, 36, 0.92) !important;
+        color: var(--c-dark) !important;
+    }
+    .leaflet-popup-tip { background: rgba(28, 26, 36, 0.92) !important; }
+
+    /* ── Mini-map ── */
     .ios-mini-map { background: #1a1823; }
 
-    /* Selected day-chip dot stays white on primary; nothing to do */
+    /* ── Rekod rows ── */
+    .rekod-row { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.08) !important; }
+    .rekod-day-badge { color: var(--c-dark); }
+
+    /* ── Topbar floating face ── */
+    .ios-topbar-flip.ios-topbar-floating .ios-topbar-face-front {
+        background: rgba(28, 26, 36, 0.55);
+    }
+
+    /* ── Misc ── */
+    .map-coord { background: rgba(28, 26, 36, 0.75) !important; color: var(--c-dark); }
+    .map-radius-badge { background: rgba(28, 26, 36, 0.75); color: var(--c-muted); }
+    select.input { background: rgba(255, 255, 255, 0.08); color: var(--c-dark); }
+    .bg-off-white { background: rgba(255, 255, 255, 0.06) !important; }
 }
 
 /* ============================================================
@@ -1197,11 +1308,6 @@ body {
     background: rgba(255, 255, 255, 0.55);
     -webkit-backdrop-filter: var(--ios-glass-blur);
     backdrop-filter: var(--ios-glass-blur);
-}
-@media (prefers-color-scheme: dark) {
-    .ios-topbar-flip.ios-topbar-floating .ios-topbar-face-front {
-        background: rgba(28, 26, 36, 0.55);
-    }
 }
 .ios-topbar-face-front {
     position: relative;
@@ -1600,9 +1706,6 @@ body {
     transition: transform 0.15s var(--ios-ease), background 0.2s var(--ios-ease), border-color 0.2s var(--ios-ease);
     -webkit-tap-highlight-color: transparent;
     min-width: 0;
-}
-@media (prefers-color-scheme: dark) {
-    .ios-day-chip { background: rgba(255,255,255,0.06); }
 }
 .ios-day-chip:active { transform: scale(0.96); }
 .ios-day-chip-dow {
