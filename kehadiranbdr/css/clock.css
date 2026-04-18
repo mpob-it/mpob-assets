@@ -465,6 +465,14 @@
     border: 3px solid white;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     object-fit: cover;
+    /* Block browser default long-press menu + image drag so the hidden
+       slingshot game can capture the gesture */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    pointer-events: auto;
+    touch-action: none;
 }
 
 /* === iOS Leaflet Fix === */
