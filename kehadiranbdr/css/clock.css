@@ -475,6 +475,26 @@
     touch-action: none;
 }
 
+/* Disable text selection on the full-screen clock-in view — selection
+   interferes with map drag + slingshot gesture. Helpdesk modal keeps
+   selection enabled so users can copy contact info. */
+.clock-noselect {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+.clock-noselect .leaflet-control-attribution,
+.clock-noselect .leaflet-control-attribution * {
+    -webkit-user-select: none;
+    user-select: none;
+}
+.clock-noselect [data-allow-select],
+.clock-noselect [data-allow-select] * {
+    -webkit-user-select: text;
+    user-select: text;
+    -webkit-touch-callout: default;
+}
+
 /* === iOS Leaflet Fix === */
 .leaflet-marker-icon,
 .leaflet-container img {
