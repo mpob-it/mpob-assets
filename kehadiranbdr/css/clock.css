@@ -131,6 +131,24 @@
 /* Status dots */
 .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
 .dot-lg { width: 10px; height: 10px; }
+.bg-blue { background: var(--c-blue); }
+
+/* GPS waiting — bold blue blinking text + pulsing dot */
+.gps-waiting {
+    color: var(--c-blue);
+    animation: gps-waiting-blink 1.2s ease-in-out infinite;
+}
+.gps-waiting-dot {
+    animation: gps-waiting-pulse 1.2s ease-in-out infinite;
+}
+@keyframes gps-waiting-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+}
+@keyframes gps-waiting-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59,130,246,0.5); }
+    50% { transform: scale(1.3); box-shadow: 0 0 0 4px rgba(59,130,246,0); }
+}
 
 /* Buttons */
 .btn {
@@ -371,20 +389,25 @@
     flex-direction: row;
     align-items: flex-start;
     flex-wrap: nowrap;
-    /* Center when fewer slots fit without scrolling */
-    min-width: max-content;
+    /* Fill the scroll container width when few slots — overflow kicks in
+       when slots × 64px basis exceeds the viewport */
+    min-width: 100%;
 }
 
 .timeline-item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    flex-shrink: 0;
-    width: 64px;
+    /* Grow to fill space when few items (spread full width);
+       never shrink below 64px so dots don't overlap when many. */
+    flex: 1 1 64px;
+    min-width: 64px;
     position: relative;
 }
 .timeline-item:last-child {
-    width: 20px;
+    /* Last item is just the final dot — no line, no growth */
+    flex: 0 0 20px;
+    min-width: 20px;
 }
 
 .timeline-dot-row {
@@ -1490,6 +1513,15 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.ios-group-status-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.ios-group-status-icon.status-ok { color: #2D8F8F; }
+.ios-group-status-icon.status-err { color: #EF4444; }
+
 .ios-group-row-value {
     font-size: 14px;
     color: var(--c-muted);
