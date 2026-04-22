@@ -1166,7 +1166,6 @@ body {
     :root {
         /* Text + muted surfaces */
         --c-dark: #F2F0F5;
-        --c-muted: #9a96a4;
 
         /* Warm-peach neutrals become dark cool neutrals */
         --c-off-white: #1f1d28;
@@ -1179,11 +1178,26 @@ body {
         /* Primary stays teal; nudge the tint slightly for dark surfaces */
         --c-primary-light: rgba(45, 143, 143, 0.20);
 
-        /* Frosted glass on dark */
-        --ios-glass-bg: rgba(28, 26, 36, 0.32);
-        --ios-glass-bg-strong: rgba(28, 26, 36, 0.48);
+        /* Matte black + SVG noise on dark — opaque, no backdrop-blur dependency */
+        --ios-matte-bg:
+            url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.18'/></svg>"),
+            linear-gradient(180deg, #2E3036 0%, #1F2126 55%, #141518 100%);
+        --ios-matte-bg-strong:
+            url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.22'/></svg>"),
+            linear-gradient(180deg, #3A3D44 0%, #2A2C31 45%, #1E2024 100%);
+        --ios-matte-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.06),
+            inset 0 -1px 0 rgba(0,0,0,0.40),
+            inset 0 0 0 1px rgba(0,0,0,0.22);
+
+        /* Map old glass vars → matte so existing rules still work */
+        --ios-glass-bg: var(--ios-matte-bg);
+        --ios-glass-bg-strong: var(--ios-matte-bg-strong);
         --ios-hairline: rgba(255, 255, 255, 0.10);
         --ios-hairline-soft: rgba(255, 255, 255, 0.06);
+
+        /* Brighter muted for readability on opaque matte */
+        --c-muted: #B5B1BD;
 
         /* Body image overlay → dark tint over the bg photo */
         --ios-bg-overlay: linear-gradient(180deg, rgba(20,18,30,0.55) 0%, rgba(20,18,30,0.72) 100%);
@@ -1192,22 +1206,30 @@ body {
 
     body { background-color: #14121E; }
 
-    /* ── All hardcoded white surfaces → dark elevated surface ── */
+    /* ── Large surfaces → matte black + noise ── */
     .bg-white,
-    .input,
-    .btn-outline,
-    .pin-key-num,
-    .ios-icon-btn,
     .card-xl,
     .clock-card,
     .ios-sheet,
     .ios-list,
-    .ios-segment,
     .ios-note-card,
     .ios-composer,
     .rekod-card,
     .ios-hero-stats,
-    .ios-group .ios-group-list,
+    .ios-group .ios-group-list {
+        background: var(--ios-matte-bg) !important;
+        color: var(--c-dark);
+        box-shadow: var(--ios-matte-shadow), 0 8px 24px rgba(0,0,0,0.28);
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+    }
+
+    /* ── Small controls → subtle translucent (no matte) ── */
+    .input,
+    .btn-outline,
+    .pin-key-num,
+    .ios-icon-btn,
+    .ios-segment,
     .ios-status-pill {
         background: rgba(255, 255, 255, 0.08) !important;
         color: var(--c-dark);
@@ -1291,10 +1313,13 @@ body {
     .ios-day-chip.is-selected .ios-day-chip-num { color: #fff; }
     .ios-day-chip-num { color: var(--c-dark); }
 
-    /* ── Bottom nav ── */
+    /* ── Bottom nav → matte pill ── */
     .ios-bottom-nav .ios-bottom-nav-bar {
-        background: rgba(28, 26, 36, 0.72) !important;
-        border-color: rgba(255, 255, 255, 0.08) !important;
+        background: var(--ios-matte-bg-strong) !important;
+        border-color: rgba(0, 0, 0, 0.25) !important;
+        box-shadow: var(--ios-matte-shadow), 0 10px 28px rgba(0,0,0,0.45);
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
     }
     .ios-nav-item { color: var(--c-muted); }
     .ios-nav-item.is-active { color: var(--c-primary); background: rgba(45, 143, 143, 0.12); }
