@@ -347,19 +347,40 @@
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* === Modal === */
+/* Frosted-glass modal — backdrop dims the world and blurs it, card sits on
+   top with its own translucent fill so content stays legible while the
+   underlying UI shows through. */
 .modal-backdrop {
     position: fixed; inset: 0; z-index: 9999;
-    background: rgba(20,18,30,0.4);
+    background: rgba(20, 18, 30, 0.45);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+    backdrop-filter: saturate(140%) blur(8px);
     display: flex; align-items: flex-end; justify-content: center;
+    padding: 16px;
+    padding-bottom: calc(16px + var(--ios-safe-bottom, 0px));
 }
 .modal-card {
     width: 100%; max-width: 384px;
     border-radius: 24px 24px 0 0; padding: 24px 24px 32px;
-    background: var(--c-peach);
+    background: rgba(255, 255, 255, 0.72);
+    -webkit-backdrop-filter: var(--ios-glass-blur);
+    backdrop-filter: var(--ios-glass-blur);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 24px 60px rgba(20, 18, 30, 0.28);
+    color: var(--ios-fg, #14121E);
 }
 @media (min-width: 640px) {
     .modal-backdrop { align-items: center; }
     .modal-card { border-radius: 24px; }
+}
+/* Dark mode: tint the card dark and bump the blur so the glass still
+   reads against a colourful background. */
+@media (prefers-color-scheme: dark) {
+    .modal-card {
+        background: rgba(28, 26, 38, 0.62);
+        border-color: rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.94);
+    }
 }
 
 /* === Timeline (horizontal) === */
