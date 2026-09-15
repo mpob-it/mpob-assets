@@ -400,7 +400,7 @@
     if (sel === '__custom') return $('#refCustom').value.trim() || 'main';
     return sel;
   };
-  const baseUrl = () => `https://cdn.jsdelivr.net/gh/${REPO}@${currentRef()}/${DIR}/`;
+  const baseUrl = () => `https://fastly.jsdelivr.net/gh/${REPO}@${currentRef()}/${DIR}/`;
   const urlFor  = l => baseUrl() + l.file;
 
   // ---------- clipboard ----------
