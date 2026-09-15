@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MPOB Logo Gallery</title>
+<meta name="description" content="Browse every MPOB logo asset with size, format and transparency details, and copy its jsDelivr CDN URL in one click.">
+<link rel="icon" href="favicon/favicon-32x32.png">
+<style>
+  :root {
+    --teal: #48a090;
+    --teal-dark: #2f7d70;
+    --gold: #e7ba3f;
+    --bg: #f5f7f6;
+    --surface: #ffffff;
+    --surface-2: #eef2f0;
+    --border: #d9e0dd;
+    --text: #17201d;
+    --muted: #5d6a66;
+    --badge: #eaf4f1;
+    --badge-text: #24564d;
+    --dark-preview: #1d2624;
+    --shadow: 0 1px 2px rgba(0,0,0,.05), 0 6px 20px -8px rgba(0,0,0,.12);
+    --radius: 14px;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1514;
+      --surface: #171f1d;
+      --surface-2: #1f2927;
+      --border: #2b3835;
+      --text: #e8efec;
+      --muted: #96a5a0;
+      --badge: #1f3430;
+      --badge-text: #a7d9cd;
+      --dark-preview: #0b100f;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -10px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1514;
+    --surface: #171f1d;
+    --surface-2: #1f2927;
+    --border: #2b3835;
+    --text: #e8efec;
+    --muted: #96a5a0;
+    --badge: #1f3430;
+    --badge-text: #a7d9cd;
+    --dark-preview: #0b100f;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -10px rgba(0,0,0,.6);
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+  }
+  a { color: var(--teal-dark); }
+  button { font: inherit; color: inherit; }
+  code, .mono { font-family: var(--mono); font-size: .86em; }
+
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 16px; }
+
+  /* ---------- header ---------- */
+  header {
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .hdr {
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+    padding-block: 18px;
+  }
+  .hdr img { height: 44px; width: auto; }
+  .hdr h1 { font-size: 1.25rem; margin: 0; letter-spacing: -.01em; }
+  .hdr p { margin: 2px 0 0; color: var(--muted); font-size: .9rem; }
+  .hdr .spacer { flex: 1; }
+  .stat {
+    font-size: .8rem; color: var(--muted);
+    background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 999px; padding: 4px 12px; white-space: nowrap;
+  }
+
+  /* ---------- toolbar ---------- */
+  .toolbar {
+    position: sticky; top: 0; z-index: 5;
+    background: color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter: saturate(150%) blur(10px);
+    -webkit-backdrop-filter: saturate(150%) blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .tb {
+    display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center;
+    padding-block: 12px;
+  }
+  .group { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .group > span.lbl {
+    font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--muted); margin-right: 2px;
+  }
+  .chip {
+    border: 1px solid var(--border); background: var(--surface);
+    border-radius: 999px; padding: 4px 11px; font-size: .82rem; cursor: pointer;
+    line-height: 1.3; transition: background .15s, border-color .15s;
+  }
+  .chip:hover { border-color: var(--teal); }
+  .chip[aria-pressed="true"] { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .search {
+    flex: 1 1 180px; min-width: 160px;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+    border-radius: 999px; padding: 6px 14px; font: inherit; font-size: .9rem; outline: none;
+  }
+  .search:focus { border-color: var(--teal); box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 25%, transparent); }
+
+  /* ---------- ref bar ---------- */
+  .refbar {
+    display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center;
+    padding: 12px 14px; margin: 18px 0 6px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); box-shadow: var(--shadow);
+  }
+  .refbar label { font-size: .85rem; font-weight: 600; }
+  .refbar select, .refbar input {
+    border: 1px solid var(--border); background: var(--surface-2); color: var(--text);
+    border-radius: 8px; padding: 6px 10px; font: inherit; font-size: .88rem; font-family: var(--mono);
+  }
+  .refbar input { width: 130px; }
+  .refbar .base { color: var(--muted); font-size: .82rem; flex-basis: 100%; }
+  .refbar .base code { word-break: break-all; }
+  .hint { color: var(--muted); font-size: .8rem; }
+
+  /* ---------- sections and grid ---------- */
+  h2.sec {
+    font-size: .95rem; font-weight: 700; margin: 28px 0 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  h2.sec small { font-weight: 500; color: var(--muted); font-size: .8rem; }
+  h2.sec::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+  .grid {
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+  .grid > * { min-width: 0; }
+  @media (max-width: 400px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column;
+    cursor: pointer; position: relative; outline: none;
+    transition: transform .15s, border-color .15s, box-shadow .15s;
+  }
+  .card:hover, .card:focus-visible { transform: translateY(-2px); border-color: var(--teal); }
+  .card:focus-visible { box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 35%, transparent); }
+  .card.copied { border-color: var(--gold); }
+  .card .rec {
+    position: absolute; top: 10px; left: 10px; z-index: 1;
+    background: var(--gold); color: #2b2205; font-size: .68rem; font-weight: 700;
+    padding: 2px 8px; border-radius: 999px; letter-spacing: .03em;
+  }
+  .preview {
+    aspect-ratio: 4 / 3; display: grid; place-items: center; padding: 18px;
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+  }
+  .preview img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+  .preview img.pixel { image-rendering: auto; }
+  /* preview background modes */
+  [data-pv="auto"] .preview.on-dark, [data-pv="dark"] .preview { background: var(--dark-preview); }
+  [data-pv="checker"] .preview {
+    background-color: #fff;
+    background-image:
+      linear-gradient(45deg, #d9d9d9 25%, transparent 25%),
+      linear-gradient(-45deg, #d9d9d9 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #d9d9d9 75%),
+      linear-gradient(-45deg, transparent 75%, #d9d9d9 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  }
+  [data-pv="light"] .preview { background: #fff; }
+
+  .body { padding: 12px 14px 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .name { font-family: var(--mono); font-size: .82rem; font-weight: 600; word-break: break-all; line-height: 1.35; }
+  .meta { display: flex; flex-wrap: wrap; gap: 5px; }
+  .b {
+    font-size: .7rem; padding: 2px 7px; border-radius: 6px;
+    background: var(--badge); color: var(--badge-text); font-weight: 600; letter-spacing: .01em;
+    white-space: nowrap;
+  }
+  .b.dim { font-family: var(--mono); font-weight: 600; }
+  .b.fmt { text-transform: uppercase; }
+  .b.warn { background: #fdf1d5; color: #6a4d05; }
+  :root[data-theme="dark"] .b.warn { background: #3a2f10; color: #f1d27a; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .b.warn { background: #3a2f10; color: #f1d27a; } }
+  .note { color: var(--muted); font-size: .78rem; line-height: 1.4; }
+
+  .actions {
+    display: flex; gap: 6px; border-top: 1px solid var(--border);
+    padding: 8px 10px; background: var(--surface-2);
+  }
+  .actions button {
+    flex: 1; border: 1px solid var(--border); background: var(--surface); border-radius: 8px;
+    padding: 6px 4px; font-size: .76rem; font-weight: 600; cursor: pointer;
+    transition: background .15s, border-color .15s;
+  }
+  .actions button:hover { border-color: var(--teal); color: var(--teal-dark); }
+  .actions button.primary { background: var(--teal); border-color: var(--teal); color: #fff; }
+  .actions button.primary:hover { background: var(--teal-dark); color: #fff; }
+  .actions a { flex: 0 0 auto; }
+  .actions a button { padding-inline: 10px; }
+
+  .empty { text-align: center; color: var(--muted); padding: 60px 0; }
+
+  /* ---------- colours ---------- */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+  .sw {
+    display: flex; align-items: center; gap: 12px; padding: 10px 12px; cursor: pointer;
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow);
+  }
+  .sw:hover { border-color: var(--teal); }
+  .sw i { width: 46px; height: 46px; border-radius: 10px; flex: 0 0 auto; border: 1px solid rgba(0,0,0,.08); }
+  .sw b { display: block; font-size: .9rem; }
+  .sw code { color: var(--muted); }
+
+  /* ---------- toast ---------- */
+  .toast {
+    position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 20px);
+    background: var(--text); color: var(--bg); padding: 10px 16px; border-radius: 10px;
+    font-size: .85rem; opacity: 0; pointer-events: none; transition: opacity .18s, transform .18s;
+    max-width: calc(100vw - 32px); box-shadow: 0 10px 30px -10px rgba(0,0,0,.4); z-index: 20;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+  .toast code { color: inherit; opacity: .8; word-break: break-all; }
+
+  footer { color: var(--muted); font-size: .8rem; padding: 40px 0 30px; }
+  footer p { margin: 4px 0; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hdr">
+    <img src="mpob-logo-md.png" alt="MPOB" width="160" height="120">
+    <div>
+      <h1>MPOB Logo Gallery</h1>
+      <p>Pick a logo, click the card, paste the jsDelivr URL.</p>
+    </div>
+    <div class="spacer"></div>
+    <span class="stat" id="count">Loading…</span>
+    <button class="chip" id="themeBtn" type="button" title="Toggle page theme">Theme</button>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap tb">
+    <input class="search" id="q" type="search" placeholder="Search file name… e.g. white sq 512" aria-label="Search logos">
+    <div class="group" data-filter="variant">
+      <span class="lbl">Variant</span>
+      <button class="chip" type="button" data-val="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-val="color">Colour</button>
+      <button class="chip" type="button" data-val="white">White</button>
+      <button class="chip" type="button" data-val="bgwhite">On white box</button>
+    </div>
+    <div class="group" data-filter="shape">
+      <span class="lbl">Shape</span>
+      <button class="chip" type="button" data-val="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-val="landscape">Landscape 4:3</button>
+      <button class="chip" type="button" data-val="square">Square 1:1</button>
+    </div>
+    <div class="group" data-filter="fmt">
+      <span class="lbl">Format</span>
+      <button class="chip" type="button" data-val="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-val="svg">SVG</button>
+      <button class="chip" type="button" data-val="png">PNG</button>
+      <button class="chip" type="button" data-val="jpg">JPG</button>
+    </div>
+    <div class="group" data-filter="pv">
+      <span class="lbl">Preview bg</span>
+      <button class="chip" type="button" data-val="auto" aria-pressed="true">Auto</button>
+      <button class="chip" type="button" data-val="light">Light</button>
+      <button class="chip" type="button" data-val="dark">Dark</button>
+      <button class="chip" type="button" data-val="checker">Checker</button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap" data-pv="auto" id="main">
+
+  <div class="refbar">
+    <label for="ref">CDN version</label>
+    <select id="ref" aria-label="jsDelivr version tag"></select>
+    <input id="refCustom" type="text" placeholder="custom ref" aria-label="Custom git ref" hidden>
+    <span class="hint" id="refHint">Pinned tags are cached permanently by jsDelivr. <code>@latest</code> follows the newest semver tag and refreshes within 12 hours.</span>
+    <span class="base">Base URL: <code id="baseUrl"></code></span>
+  </div>
+
+  <div id="sections"></div>
+
+  <h2 class="sec">Brand colours <small>click to copy hex</small></h2>
+  <div class="swatches">
+    <div class="sw" data-copy="#48A090" role="button" tabindex="0"><i style="background:#48A090"></i><div><b>MPOB Teal</b><code>#48A090</code></div></div>
+    <div class="sw" data-copy="#E7BA3F" role="button" tabindex="0"><i style="background:#E7BA3F"></i><div><b>MPOB Gold</b><code>#E7BA3F</code></div></div>
+    <div class="sw" data-copy="#FFFFFF" role="button" tabindex="0"><i style="background:#FFFFFF"></i><div><b>White</b><code>#FFFFFF</code></div></div>
+  </div>
+
+  <footer>
+    <p>Files live in <code>mpob/</code> of <a href="https://github.com/mpob-it/mpob-assets" target="_blank" rel="noopener">mpob-it/mpob-assets</a>. Previews are loaded relative to this page, so they always show the files from the same commit you are viewing.</p>
+    <p>Tip: prefer the SVG for anything that scales. Use <code>-white</code> variants on dark or coloured backgrounds. <code>-bgwhite-sq</code> files are opaque and meant for avatars or app icons that must not be transparent.</p>
+  </footer>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  'use strict';
+
+  const REPO = 'mpob-it/mpob-assets';
+  const DIR  = 'mpob';
+  // Fallback tag if the jsDelivr API cannot be reached. Update when you cut a new release.
+  const FALLBACK_TAG = 'v1.4.95';
+
+  // Metadata snapshot (dimensions, transparency, bytes) generated from the files in this folder.
+  // Regenerate with: for f in mpob-logo*; do sips -g pixelWidth -g pixelHeight -g hasAlpha "$f"; stat -f%z "$f"; done
+  const LOGOS = [
+    // Vector
+    { file: 'mpob-logo.svg',              w: 389,  h: 291,  alpha: true,  bytes: 2405,  variant: 'color',   shape: 'landscape', rec: true,  note: 'Master vector. Scales to any size; smallest possible payload.' },
+    { file: 'mpob-logo-white.svg',        w: 389,  h: 291,  alpha: true,  bytes: 2824,  variant: 'white',   shape: 'landscape', rec: true,  note: 'All-white vector for dark or coloured backgrounds.' },
+
+    // Colour, transparent, landscape
+    { file: 'mpob-logo-xs.png',           w: 53,   h: 40,   alpha: true,  bytes: 535,   variant: 'color',   shape: 'landscape', note: 'Tiny inline mark, e.g. table rows or list items.' },
+    { file: 'mpob-logo-sm.png',           w: 106,  h: 80,   alpha: true,  bytes: 940,   variant: 'color',   shape: 'landscape', note: 'Navbar or compact header.' },
+    { file: 'mpob-logo-md.png',           w: 160,  h: 120,  alpha: true,  bytes: 3226,  variant: 'color',   shape: 'landscape', note: 'Default header logo. Used across most MPOB apps.' },
+    { file: 'mpob-logo-lg.png',           w: 320,  h: 240,  alpha: true,  bytes: 6144,  variant: 'color',   shape: 'landscape', note: '2x of md for retina headers.' },
+    { file: 'mpob-logo.png',              w: 387,  h: 290,  alpha: true,  bytes: 3609,  variant: 'color',   shape: 'landscape', note: 'Base raster export at the native SVG size.' },
+    { file: 'mpob-logo-xl.png',           w: 1603, h: 1200, alpha: true,  bytes: 17122, variant: 'color',   shape: 'landscape', note: 'Print, splash screens, hero images.' },
+
+    // Colour, transparent, square
+    { file: 'mpob-logo-sq.png',           w: 400,  h: 400,  alpha: true,  bytes: 3650,  variant: 'color',   shape: 'square',    note: 'Square with transparent padding. Avatars, cards.' },
+    { file: 'mpob-logo-sq-512.min.png',   w: 512,  h: 512,  alpha: true,  bytes: 9398,  variant: 'color',   shape: 'square',    note: 'Compressed 512 square. Prefer this over the unminified copy.' },
+    { file: 'mpob-logo-sq-512.png',       w: 512,  h: 512,  alpha: true,  bytes: 23527, variant: 'color',   shape: 'square',    note: 'Uncompressed source of the .min version.' },
+
+    // Colour on opaque white box
+    { file: 'mpob-logo-bgwhite-sq-sm.png',w: 192,  h: 192,  alpha: true,  bytes: 3787,  variant: 'bgwhite', shape: 'square',    note: 'White box behind the mark. PWA / manifest 192 icon.' },
+    { file: 'mpob-logo-bgwhite-sq-md.png',w: 512,  h: 512,  alpha: false, bytes: 6800,  variant: 'bgwhite', shape: 'square',    note: 'Opaque 512 square. Manifest icon, OAuth client logo.' },
+    { file: 'mpob-logo-bgwhite-sq-xl.png',w: 1920, h: 1920, alpha: false, bytes: 22023, variant: 'bgwhite', shape: 'square',    note: 'Opaque high-res square for store listings or print.' },
+    { file: 'mpob-logo-sq-sm.jpg',        w: 80,   h: 80,   alpha: false, bytes: 3073,  variant: 'bgwhite', shape: 'square',    note: 'JPG, no transparency. Only where PNG is not accepted.' },
+    { file: 'mpob-logo-sq.jpg',           w: 400,  h: 400,  alpha: false, bytes: 10278, variant: 'bgwhite', shape: 'square',    note: 'JPG, no transparency. Email signatures, legacy systems.' },
+
+    // White, transparent, landscape
+    { file: 'mpob-logo-white-xs.png',     w: 107,  h: 80,   alpha: true,  bytes: 1727,  variant: 'white',   shape: 'landscape', note: 'Small white mark for dark navbars.' },
+    { file: 'mpob-logo-white-sm.png',     w: 214,  h: 160,  alpha: true,  bytes: 3482,  variant: 'white',   shape: 'landscape', note: '2x of xs.' },
+    { file: 'mpob-logo-white.png',        w: 389,  h: 291,  alpha: true,  bytes: 6551,  variant: 'white',   shape: 'landscape', note: 'Base white raster at native size.' },
+    { file: 'mpob-logo-white-md.png',     w: 685,  h: 512,  alpha: true,  bytes: 11968, variant: 'white',   shape: 'landscape', note: 'Dark hero sections, login screens.' },
+    { file: 'mpob-logo-white-xl.png',     w: 1070, h: 800,  alpha: true,  bytes: 19443, variant: 'white',   shape: 'landscape', note: 'Large dark backgrounds.' },
+    { file: 'mpob-logo-white-2xl.png',    w: 1605, h: 1200, alpha: true,  bytes: 30332, variant: 'white',   shape: 'landscape', note: 'Presentation slides, print on dark.' },
+    { file: 'mpob-logo-white-3xl.png',    w: 2139, h: 1600, alpha: true,  bytes: 43045, variant: 'white',   shape: 'landscape', note: 'Largest white raster available.' },
+
+    // White, transparent, square
+    { file: 'mpob-logo-white-sq-xs.png',  w: 80,   h: 80,   alpha: true,  bytes: 1294,  variant: 'white',   shape: 'square',    note: 'Small square white mark.' },
+    { file: 'mpob-logo-white-sq-sm.png',  w: 160,  h: 160,  alpha: true,  bytes: 2551,  variant: 'white',   shape: 'square',    note: 'Square white, 160.' },
+    { file: 'mpob-logo-white-sq.png',     w: 400,  h: 400,  alpha: true,  bytes: 6654,  variant: 'white',   shape: 'square',    note: 'Square white, 400.' },
+    { file: 'mpob-logo-white-sq-md.png',  w: 512,  h: 512,  alpha: true,  bytes: 8687,  variant: 'white',   shape: 'square',    note: 'Square white, 512. Dark-theme app icon.' },
+    { file: 'mpob-logo-white-sq-xl.png',  w: 800,  h: 800,  alpha: true,  bytes: 14204, variant: 'white',   shape: 'square',    note: 'Square white, 800.' },
+    { file: 'mpob-logo-white-sq-2xl.png', w: 1200, h: 1200, alpha: true,  bytes: 22171, variant: 'white',   shape: 'square',    note: 'Square white, 1200.' },
+    { file: 'mpob-logo-white-sq-3xl.png', w: 1600, h: 1600, alpha: true,  bytes: 30889, variant: 'white',   shape: 'square',    note: 'Square white, 1600.' },
+  ];
+
+  const SECTIONS = [
+    { key: 'svg',           title: 'Vector (SVG)',                      match: l => fmt(l) === 'svg' },
+    { key: 'color-land',    title: 'Colour · transparent · landscape',  match: l => fmt(l) !== 'svg' && l.variant === 'color' && l.shape === 'landscape' },
+    { key: 'color-sq',      title: 'Colour · transparent · square',     match: l => fmt(l) !== 'svg' && l.variant === 'color' && l.shape === 'square' },
+    { key: 'bgwhite',       title: 'Colour on white box · opaque',      match: l => l.variant === 'bgwhite' },
+    { key: 'white-land',    title: 'White · transparent · landscape',   match: l => fmt(l) !== 'svg' && l.variant === 'white' && l.shape === 'landscape' },
+    { key: 'white-sq',      title: 'White · transparent · square',      match: l => fmt(l) !== 'svg' && l.variant === 'white' && l.shape === 'square' },
+  ];
+
+  const $  = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+
+  const fmt = l => l.file.split('.').pop().toLowerCase();
+  const kb  = b => b < 1024 ? b + ' B' : (b / 1024).toFixed(1).replace(/\.0$/, '') + ' KB';
+  const gcd = (a, b) => b ? gcd(b, a % b) : a;
+  const ratio = (w, h) => {
+    if (w === h) return '1:1';
+    const r = w / h;
+    if (Math.abs(r - 4 / 3) < 0.02) return '4:3';
+    const g = gcd(w, h); return `${w / g}:${h / g}`;
+  };
+  const esc = s => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+  // ---------- state ----------
+  const state = { q: '', variant: 'all', shape: 'all', fmt: 'all', pv: 'auto', ref: FALLBACK_TAG };
+
+  const currentRef = () => {
+    const sel = $('#ref').value;
+    if (sel === '__custom') return $('#refCustom').value.trim() || 'main';
+    return sel;
+  };
+  const baseUrl = () => `https://cdn.jsdelivr.net/gh/${REPO}@${currentRef()}/${DIR}/`;
+  const urlFor  = l => baseUrl() + l.file;
+
+  // ---------- clipboard ----------
+  let toastTimer;
+  function toast(msg, sub) {
+    const t = $('#toast');
+    t.innerHTML = esc(msg) + (sub ? '<br><code>' + esc(sub) + '</code>' : '');
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  }
+  async function copy(text, label, el) {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+      }
+      toast(label || 'Copied', text);
+      if (el) { el.classList.add('copied'); setTimeout(() => el.classList.remove('copied'), 900); }
+    } catch (e) {
+      window.prompt('Copy manually:', text);
+    }
+  }
+
+  // ---------- render ----------
+  function card(l) {
+    const f = fmt(l);
+    const isSvg = f === 'svg';
+    const dark = l.variant === 'white';
+    const alphaBadge = isSvg ? '' : (l.alpha
+      ? '<span class="b">Transparent</span>'
+      : '<span class="b warn">Opaque</span>');
+    return `
+      <article class="card" role="button" tabindex="0" data-file="${esc(l.file)}" aria-label="Copy CDN URL for ${esc(l.file)}">
+        ${l.rec ? '<span class="rec">Recommended</span>' : ''}
+        <div class="preview${dark ? ' on-dark' : ''}">
+          <img src="${esc(l.file)}" alt="" loading="lazy" decoding="async" width="${l.w}" height="${l.h}">
+        </div>
+        <div class="body">
+          <div class="name">${esc(l.file)}</div>
+          <div class="meta">
+            <span class="b fmt">${f}</span>
+            <span class="b dim">${isSvg ? 'viewBox ' : ''}${l.w}×${l.h}</span>
+            <span class="b">${ratio(l.w, l.h)}</span>
+            <span class="b">${kb(l.bytes)}</span>
+            ${alphaBadge}
+            ${isSvg ? '<span class="b">Scalable</span>' : ''}
+          </div>
+          <div class="note">${esc(l.note || '')}</div>
+        </div>
+        <div class="actions">
+          <button type="button" class="primary" data-act="url">Copy URL</button>
+          <button type="button" data-act="img">Copy &lt;img&gt;</button>
+          <a href="${esc(l.file)}" target="_blank" rel="noopener" data-act="open" title="Open file"><button type="button" tabindex="-1">↗</button></a>
+        </div>
+      </article>`;
+  }
+
+  function matches(l) {
+    if (state.variant !== 'all' && l.variant !== state.variant) return false;
+    if (state.shape   !== 'all' && l.shape   !== state.shape)   return false;
+    if (state.fmt     !== 'all' && fmt(l)    !== state.fmt)     return false;
+    if (state.q) {
+      const hay = (l.file + ' ' + l.variant + ' ' + l.shape + ' ' + l.w + 'x' + l.h + ' ' + (l.note || '')).toLowerCase();
+      return state.q.toLowerCase().split(/\s+/).every(t => hay.includes(t));
+    }
+    return true;
+  }
+
+  function render() {
+    const host = $('#sections');
+    let shown = 0;
+    host.innerHTML = SECTIONS.map(s => {
+      const items = LOGOS.filter(s.match).filter(matches);
+      shown += items.length;
+      if (!items.length) return '';
+      return `<h2 class="sec">${esc(s.title)} <small>${items.length}</small></h2>
+              <div class="grid">${items.map(card).join('')}</div>`;
+    }).join('');
+    if (!shown) host.innerHTML = '<div class="empty">No logos match. Clear a filter or the search box.</div>';
+    $('#count').textContent = `${shown} of ${LOGOS.length} files`;
+    $('#baseUrl').textContent = baseUrl();
+  }
+
+  // ---------- events ----------
+  $('#sections').addEventListener('click', e => {
+    const c = e.target.closest('.card'); if (!c) return;
+    const l = LOGOS.find(x => x.file === c.dataset.file);
+    const act = e.target.closest('[data-act]')?.dataset.act;
+    if (act === 'open') return; // let the anchor navigate
+    const url = urlFor(l);
+    if (act === 'img') {
+      const tag = `<img src="${url}" alt="MPOB" width="${l.w}" height="${l.h}">`;
+      copy(tag, 'Copied <img> tag', c);
+    } else {
+      copy(url, 'Copied jsDelivr URL', c);
+    }
+  });
+  $('#sections').addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const c = e.target.closest('.card'); if (!c || e.target !== c) return;
+    e.preventDefault();
+    const l = LOGOS.find(x => x.file === c.dataset.file);
+    copy(urlFor(l), 'Copied jsDelivr URL', c);
+  });
+
+  $$('.group[data-filter]').forEach(g => {
+    g.addEventListener('click', e => {
+      const b = e.target.closest('.chip'); if (!b) return;
+      g.querySelectorAll('.chip').forEach(x => x.setAttribute('aria-pressed', 'false'));
+      b.setAttribute('aria-pressed', 'true');
+      const key = g.dataset.filter;
+      state[key] = b.dataset.val;
+      if (key === 'pv') $('#main').dataset.pv = state.pv; else render();
+    });
+  });
+
+  $('#q').addEventListener('input', e => { state.q = e.target.value.trim(); render(); });
+
+  $('#ref').addEventListener('change', () => {
+    const custom = $('#ref').value === '__custom';
+    $('#refCustom').hidden = !custom;
+    if (custom) $('#refCustom').focus();
+    $('#baseUrl').textContent = baseUrl();
+    try { localStorage.setItem('mpob-logo-ref', $('#ref').value); } catch (_) {}
+  });
+  $('#refCustom').addEventListener('input', () => { $('#baseUrl').textContent = baseUrl(); });
+
+  $$('.sw').forEach(s => {
+    const go = () => copy(s.dataset.copy, 'Copied colour');
+    s.addEventListener('click', go);
+    s.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+  });
+
+  // theme toggle: light -> dark -> system
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('mpob-logo-theme'); if (t) root.dataset.theme = t; } catch (_) {}
+  $('#themeBtn').addEventListener('click', () => {
+    const cur = root.dataset.theme || 'system';
+    const next = cur === 'system' ? 'dark' : cur === 'dark' ? 'light' : 'system';
+    if (next === 'system') delete root.dataset.theme; else root.dataset.theme = next;
+    try { next === 'system' ? localStorage.removeItem('mpob-logo-theme') : localStorage.setItem('mpob-logo-theme', next); } catch (_) {}
+    $('#themeBtn').textContent = 'Theme: ' + next;
+  });
+  $('#themeBtn').textContent = 'Theme: ' + (root.dataset.theme || 'system');
+
+  // ---------- version list ----------
+  function fillRefs(tags) {
+    const sel = $('#ref');
+    let saved = null;
+    try { saved = localStorage.getItem('mpob-logo-ref'); } catch (_) {}
+    const opts = [];
+    if (tags.length) opts.push({ v: tags[0], t: `${tags[0]} (latest tag, recommended)` });
+    tags.slice(1, 15).forEach(t => opts.push({ v: t, t }));
+    opts.push({ v: 'latest', t: '@latest (auto-updates)' });
+    opts.push({ v: 'main',   t: '@main (branch, cached 12h)' });
+    opts.push({ v: '__custom', t: 'custom…' });
+    sel.innerHTML = opts.map(o => `<option value="${esc(o.v)}">${esc(o.t)}</option>`).join('');
+    if (saved && opts.some(o => o.v === saved)) sel.value = saved;
+    $('#refCustom').hidden = sel.value !== '__custom';
+    $('#baseUrl').textContent = baseUrl();
+  }
+
+  render();
+  fillRefs([FALLBACK_TAG]);
+
+  // jsDelivr data API lists all git tags for the repo (CORS enabled).
+  fetch(`https://data.jsdelivr.com/v1/packages/gh/${REPO}`)
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(d => {
+      // jsDelivr strips the leading "v"; restore it to match the repo's git tags.
+      const tags = (d.versions || []).map(v => /^\d/.test(v.version) ? 'v' + v.version : v.version);
+      if (tags.length) { fillRefs(tags); toast('Loaded ' + tags.length + ' tags from jsDelivr'); }
+    })
+    .catch(() => { /* keep fallback */ });
+})();
+</script>
+</body>
+</html>
